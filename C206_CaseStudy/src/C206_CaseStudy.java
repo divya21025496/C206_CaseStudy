@@ -12,6 +12,7 @@ public class C206_CaseStudy {
 		//Request for quotation <arrayList>
 		//Manage Quotation <arrayList>
 		//Manage Appointment <arrayList>
+		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
 		packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/9/2022", f1), LocalDate.parse("23/2/2023", f1) , 15000.0  )) ;
 		packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/8/2022", f1), LocalDate.parse("1/11/2022", f1) , 6000.0  )) ;
@@ -35,7 +36,8 @@ public class C206_CaseStudy {
 				
 			}
 			else if (option == 5) {
-				
+				C206_CaseStudy.viewAllAppointment(appointmentList);
+				C206_CaseStudy.retrieveAllAppointment(appointmentList);
 			}
 			else {
 				
@@ -60,5 +62,22 @@ public class C206_CaseStudy {
 
 			
 		}
+		
+		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
+			String output = "";
+			for(int i  = 0; i < appointmentList.size(); i++) {
+				output += String.format("%-84s\n", appointmentList.get(i).toString());
+			}
+			return output;
+		}
+		
+		public static void viewAllAppointment(ArrayList<Appointment> appointmentList) {
+			C206_CaseStudy.setHeader("VIEW APPOINTMENT");
+			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION", "DATE", "TIME");
+			output += retrieveAllAppointment(appointmentList);
+			System.out.println(output);
+		}
+		
+		
 
 }
