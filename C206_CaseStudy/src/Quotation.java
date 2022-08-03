@@ -52,7 +52,7 @@ public class Quotation {
 		this.urgent_request = urgent_request;
 	};
 	
-	// for admin/designer to update //
+	// for admin/designer to update 
 	public void manage_quotation(String request_id, String quotation_id, String renovation_category, String category_description, String designer_name, LocalDate earliest_quotation_date, double total_quotation_amount) {
 		this.request_id = request_id;
 		this.quotation_id = quotation_id;
