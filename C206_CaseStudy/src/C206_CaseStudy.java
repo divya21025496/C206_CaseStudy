@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class C206_CaseStudy {
-
+	//private static final int OPTION_PACKAGE = 2;
 	public static void main(String[] args) {
 		DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
 		//Manage customer <arrayList>
@@ -28,6 +28,16 @@ public class C206_CaseStudy {
 				
 			}
 			else if (option == 2) {
+				int type = Helper.readInt("Enter type > ");
+				if (type == 1) {
+					// view package 
+					C206_CaseStudy.retrieveAllPackage(packageList) ;
+					C206_CaseStudy.retrieveAllPackage(packageList) ;
+				} else if (type == 2) {
+					//add package 
+					Packages p = inputPackages();
+				}
+				
 				
 			}
 			else if (option == 3) {
@@ -63,7 +73,35 @@ public class C206_CaseStudy {
 
 			
 		}
+		// option 2
+		public static String retrieveAllPackage(ArrayList<Packages> packageList) {
+			String output = "" ;
+			for (int i = 0; i < packageList.size(); i++) {
+				output += String.format("%-84s\n", packageList.get(i).toString());
+			}
+			return output; 
+			 
+		}
+		public static void viewAllPackage(ArrayList<Packages> packageList) { 
+			C206_CaseStudy.setHeader("VIEW PACKAGE");
+			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION", "START_DATE", "END_DATE","AMOUNT");
+			output = retrieveAllPackage(packageList);
+			System.out.println(output);
+		}
+		public static Packages inputPackages() {
+			DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
+			String code = Helper.readString("Enter code") ; 
+			String description = Helper.readString("Enter description > ");
+			String stDate = Helper.readString("Enter Start Date: ") ; 
+			String  endDate = Helper.readString("Enter End Date: ") ; 
+			double amt = Helper.readDouble("Enter amount: " ) ; 
+			LocalDate st = LocalDate.parse(stDate, f1) ;
+			LocalDate ed = LocalDate.parse(endDate, f1) ;
+			Packages pakg= new Packages(code, description, st, ed, amt);
+			return pakg ;
+		}
 		
+		// option 5
 		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 			String output = "";
 			for(int i  = 0; i < appointmentList.size(); i++) {
@@ -71,12 +109,12 @@ public class C206_CaseStudy {
 			}
 			return output;
 		}
-		
 		public static void viewAllAppointment(ArrayList<Appointment> appointmentList) {
 			C206_CaseStudy.setHeader("VIEW APPOINTMENT");
 			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION", "DATE", "TIME");
 			output += retrieveAllAppointment(appointmentList);
 			System.out.println(output);
+
 		}
 		
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
@@ -87,6 +125,6 @@ public class C206_CaseStudy {
 			// to be done later
 		}
 		
-		
+
 
 }
