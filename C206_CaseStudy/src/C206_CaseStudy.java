@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,9 +12,9 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>(); 
 		//Request for quotation <arrayList>
 		//Manage Quotation <arrayList>
+		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 		//Manage Appointment <arrayList>
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 		
 		packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/9/2022", f1), LocalDate.parse("23/2/2023", f1) , 15000.0  )) ;
 		packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/8/2022", f1), LocalDate.parse("1/11/2022", f1) , 6000.0  )) ;
@@ -114,11 +115,27 @@ public class C206_CaseStudy {
 			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION", "DATE", "TIME");
 			output += retrieveAllAppointment(appointmentList);
 			System.out.println(output);
-
 		}
 		
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
-			// TBD later
+			String request_id = "";
+			String property_type = Helper.readString("Property type > ");
+			Double area_size = Helper.readDouble("Area size > ");
+			String name = Helper.readString("Name > ");
+			int contactNum = Helper.readInt("Contact number > ");
+			String email = Helper.readString("Email > ");
+			Double budget = Helper.readDouble("Budget > ");
+			String completion_date = Helper.readString("Completion date> ");
+			String renovation_type = Helper.readString("Renovation type > ");
+			int num_of_rooms_renovate = Helper.readInt("Number of rooms to renovate > ");
+			int num_of_toilets_renovate = Helper.readInt("Number of toilets to renovate > ");
+			String renovation_style = Helper.readString("Renovation style (optional) > ");
+			String urgent_request = Helper.readString("Urgent request > ");
+			
+			Quotation q = new Quotation(request_id, property_type, area_size, name, contactNum, email, budget, LocalDate.parse(completion_date), num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
+			
+			// new Quotation(request_id, property_type, area_size, email, budget, completion_date, num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
+			
 		}
 		
 		public static void manageQuotation(ArrayList<Quotation> quotationList) {
