@@ -52,13 +52,13 @@ public class Quotation {
 		this.urgent_request = urgent_request;
 	};
 	
-	// for admin/designer to update
+	// for admin and designer to update
 	public void manage_quotation(String request_id, String quotation_id, String renovation_category, String category_description, String designer_name, LocalDate earliest_quotation_date, double total_quotation_amount) {
 		this.request_id = request_id;
 		this.quotation_id = quotation_id;
 		this.renovation_category = renovation_category;
 		this.category_description = category_description;
-		this.designer_name = designer_name;
+		this.designer_name = designer_n	ame;
 		this.earliest_start_date = earliest_start_date;
 		this.total_quotation_amount = total_quotation_amount;
 	}
