@@ -8,7 +8,7 @@ public class Quotation {
 	private int contactNum;
 	private String email;
 	private double budget;
-	private LocalDate completion_date;
+	private LocalDate completion_date; 
 	private String renovation_type;
 	private int num_of_rooms_renovate;
 	private int num_of_toilets_renovate;
@@ -22,7 +22,7 @@ public class Quotation {
 	private String renovation_category;
 	private String category_description;
 	
-	public Quotation(String request_id, String property_type, double area_size, String name, int contactNum, String email, double budget, LocalDate completion_date, int num_of_rooms_renovate, int num_of_toilets_renovate, String renovation_style, String urgent_request) {
+	public Quotation(String request_id, String property_type, double area_size, String name, int contactNum, String email, double budget, LocalDate completion_date, String renovation_type, int num_of_rooms_renovate, int num_of_toilets_renovate, String renovation_style, String urgent_request) {
 		this.request_id = request_id;
 		this.property_type = property_type;
 		this.area_size = area_size;
@@ -70,14 +70,14 @@ public class Quotation {
 		return budget;
 	}
 	
-	public String get_earliest_start_date() {
-		String date = earliest_start_date.toString();
-		return date;
+	public LocalDate get_earliest_start_date() { 
+		return earliest_start_date; 
 	}
 	
-	public String get_completion_date() {
-		String date = completion_date.toString();
-		return date;
+	}
+	
+	public LocalDate get_completion_date() {
+		return completion_date;
 	}
 	
 	public String get_renovation_type() {

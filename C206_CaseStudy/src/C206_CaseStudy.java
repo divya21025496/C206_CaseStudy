@@ -118,6 +118,7 @@ public class C206_CaseStudy {
 		}
 		
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
+			DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
 			String request_id = "";
 			String property_type = Helper.readString("Property type > ");
 			Double area_size = Helper.readDouble("Area size > ");
@@ -125,14 +126,17 @@ public class C206_CaseStudy {
 			int contactNum = Helper.readInt("Contact number > ");
 			String email = Helper.readString("Email > ");
 			Double budget = Helper.readDouble("Budget > ");
-			String completion_date = Helper.readString("Completion date> ");
 			String renovation_type = Helper.readString("Renovation type > ");
 			int num_of_rooms_renovate = Helper.readInt("Number of rooms to renovate > ");
 			int num_of_toilets_renovate = Helper.readInt("Number of toilets to renovate > ");
 			String renovation_style = Helper.readString("Renovation style (optional) > ");
 			String urgent_request = Helper.readString("Urgent request > ");
 			
-			Quotation q = new Quotation(request_id, property_type, area_size, name, contactNum, email, budget, LocalDate.parse(completion_date), num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
+			String completion_date = Helper.readString("Completion date > ");
+			LocalDate c_date = LocalDate.parse(completion_date, f1);
+			
+			
+			Quotation q = new Quotation(request_id, property_type, area_size, name, contactNum, email, budget, c_date, renovation_type, num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
 			
 			// new Quotation(request_id, property_type, area_size, email, budget, completion_date, num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
 			
