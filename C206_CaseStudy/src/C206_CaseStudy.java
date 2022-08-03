@@ -13,6 +13,7 @@ public class C206_CaseStudy {
 		//Manage Quotation <arrayList>
 		//Manage Appointment <arrayList>
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 		
 		packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/9/2022", f1), LocalDate.parse("23/2/2023", f1) , 15000.0  )) ;
 		packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/8/2022", f1), LocalDate.parse("1/11/2022", f1) , 6000.0  )) ;
@@ -76,6 +77,14 @@ public class C206_CaseStudy {
 			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION", "DATE", "TIME");
 			output += retrieveAllAppointment(appointmentList);
 			System.out.println(output);
+		}
+		
+		public static void requestQuotation(ArrayList<Quotation> quotationList) {
+			// to be done later
+		}
+		
+		public static void manageQuotation(ArrayList<Quotation> quotationList) {
+			// to be done later
 		}
 		
 		
