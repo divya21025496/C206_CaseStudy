@@ -58,7 +58,7 @@ public class Quotation {
 		this.quotation_id = quotation_id;
 		this.renovation_category = renovation_category;
 		this.category_description = category_description;
-		this.designer_name = designer_n	ame;
+		this.designer_name = designer_name;
 		this.earliest_start_date = earliest_start_date;
 		this.total_quotation_amount = total_quotation_amount;
 	}
