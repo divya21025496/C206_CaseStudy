@@ -118,11 +118,11 @@ public class C206_CaseStudy {
 		}
 		
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
-			// to be done later
+			// TBD later
 		}
 		
 		public static void manageQuotation(ArrayList<Quotation> quotationList) {
-			// to be done later
+			// TBD later
 		}
 		
 
