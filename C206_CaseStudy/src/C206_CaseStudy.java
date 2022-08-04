@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -59,6 +60,8 @@ public class C206_CaseStudy {
 			else if (option == 5) {
 				C206_CaseStudy.viewAllAppointment(appointmentList);
 				C206_CaseStudy.retrieveAllAppointment(appointmentList);
+				Appointment app = inputAppointment();
+				C206_CaseStudy.addAppointment(appointmentList, app);
 			}
 			else {
 				
@@ -111,7 +114,7 @@ public class C206_CaseStudy {
 			return pakg ;
 		}
 		
-		// option 5
+//=========================APPOINTMENT option 5
 		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 			String output = "";
 			for(int i  = 0; i < appointmentList.size(); i++) {
@@ -125,6 +128,23 @@ public class C206_CaseStudy {
 			output += retrieveAllAppointment(appointmentList);
 			System.out.println(output);
 		}
+		
+		public static Appointment inputAppointment() {
+			String date = Helper.readString("Enter asset tag > ");
+			String description = Helper.readString("Enter description > ");
+			String time = Helper.readString("Enter time > ");
+
+			Appointment app = new Appointment(date, description, time);
+			return app;
+			
+		}
+		
+		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment app) {
+			// TODO Auto-generated method stub
+			appointmentList.add(app);
+		}
+//==================================================================
+		
 		
 		//TBC later
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
@@ -155,6 +175,7 @@ public class C206_CaseStudy {
 		public static void manageQuotation(ArrayList<Quotation> quotationList) {
 			// TBD later //
 		}
+		
 		
 
 

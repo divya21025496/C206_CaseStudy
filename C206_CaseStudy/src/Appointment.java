@@ -14,6 +14,12 @@ public class Appointment {
 		this.time = time ; 
 		
 	}
+	public Appointment(String date2, String description2, String time2) {
+		// TODO Auto-generated constructor stub
+		this.date = date;
+		this.description = description;
+		this.time = time;
+	}
 	public String getCode() { 
 		return code ; 
 	}
