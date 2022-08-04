@@ -16,9 +16,17 @@ public class C206_CaseStudy {
 		//Manage Appointment <arrayList>
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
-		packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/9/2022", f1), LocalDate.parse("23/2/2023", f1) , 15000.0  )) ;
-		packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/8/2022", f1), LocalDate.parse("1/11/2022", f1) , 6000.0  )) ;
-		packageList.add(new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/6/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0  )) ;
+		// 23/2/2023
+		
+		/** DD MM YY
+			packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/9/2022", f1), LocalDate.parse("23/2/2023", f1) , 15000.0  )) ;
+			packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/8/2022", f1), LocalDate.parse("1/11/2022", f1) , 6000.0  )) ;
+			packageList.add(new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/6/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0  )) ;
+		**/
+		
+		packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("2022-09-10"), LocalDate.parse("2023-02-23") , 15000.0)) ;
+		packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("2022-08-10"), LocalDate.parse("2022-11-01") , 6000.0)) ;
+		packageList.add(new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("2022-06-10"), LocalDate.parse("2022-10-23") , 7000.0)) ;
 		// as a admin u can add more packages
 		
 		int option = 0 ; 
@@ -42,6 +50,7 @@ public class C206_CaseStudy {
 				
 			}
 			else if (option == 3) {
+				requestQuotation(quotationList);
 				
 			}
 			else if (option == 4) {
@@ -117,9 +126,10 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 		
+		//TBC later
 		public static void requestQuotation(ArrayList<Quotation> quotationList) {
 			DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
-			String request_id = "";
+			String rID = "";
 			String property_type = Helper.readString("Property type > ");
 			Double area_size = Helper.readDouble("Area size > ");
 			String name = Helper.readString("Name > ");
@@ -127,16 +137,16 @@ public class C206_CaseStudy {
 			String email = Helper.readString("Email > ");
 			Double budget = Helper.readDouble("Budget > ");
 			String renovation_type = Helper.readString("Renovation type > ");
-			int num_of_rooms_renovate = Helper.readInt("Number of rooms to renovate > ");
-			int num_of_toilets_renovate = Helper.readInt("Number of toilets to renovate > ");
+			int numRooms = Helper.readInt("Number of rooms to renovate > ");
+			int numToilets = Helper.readInt("Number of toilets to renovate > ");
 			String renovation_style = Helper.readString("Renovation style (optional) > ");
 			String urgent_request = Helper.readString("Urgent request > ");
 			
-			String completion_date = Helper.readString("Completion date > ");
-			LocalDate c_date = LocalDate.parse(completion_date, f1);
+			String cDate1 = Helper.readString("Completion date (YYYY-MM-DD)> ");
+			LocalDate cDate = LocalDate.parse(cDate1);
 			
-			
-			Quotation q = new Quotation(request_id, property_type, area_size, name, contactNum, email, budget, c_date, renovation_type, num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
+			Quotation q = new Quotation(rID, property_type, area_size, name, contactNum, email, budget, cDate, renovation_type, numRooms, numToilets, renovation_style, urgent_request);
+			System.out.println(q);
 			
 			// new Quotation(request_id, property_type, area_size, email, budget, completion_date, num_of_rooms_renovate, num_of_toilets_renovate, renovation_style, urgent_request);
 			

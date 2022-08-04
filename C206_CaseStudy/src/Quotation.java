@@ -8,37 +8,37 @@ public class Quotation {
 	private int contactNum;
 	private String email;
 	private double budget;
-	private LocalDate completion_date; 
+	private LocalDate cDate; 
 	private String renovation_type;
-	private int num_of_rooms_renovate;
-	private int num_of_toilets_renovate;
+	private int numRooms;
+	private int numToilets;
 	private String renovation_style;
 	private String urgent_request;
-	private String request_id;
-	private String quotation_id;
-	private String designer_name;
-	private LocalDate earliest_start_date;
+	private String rID;
+	private String qID;
+	private String dName;
+	private LocalDate eDate;
 	private Double total_quotation_amount;
 	private String renovation_category;
 	private String category_description;
 	
-	public Quotation(String request_id, String property_type, double area_size, String name, int contactNum, String email, double budget, LocalDate completion_date, String renovation_type, int num_of_rooms_renovate, int num_of_toilets_renovate, String renovation_style, String urgent_request) {
-		this.request_id = request_id;
+	public Quotation(String rID, String property_type, double area_size, String name, int contactNum, String email, double budget, LocalDate cDate, String renovation_type, int numRooms, int numToilets, String renovation_style, String urgent_request) {
+		this.rID = rID;
 		this.property_type = property_type;
 		this.area_size = area_size;
 		this.name = name;
 		this.contactNum = contactNum;
 		this.email = email;
 		this.budget = budget;
-		this.completion_date = completion_date;
+		this.cDate = cDate;
 		this.renovation_type = renovation_type;
-		this.num_of_rooms_renovate = num_of_rooms_renovate;
-		this.num_of_toilets_renovate = num_of_toilets_renovate;
+		this.numRooms = numRooms;
+		this.numToilets = numToilets;
 		this.renovation_style = renovation_style;
 		this.urgent_request = urgent_request;
 	};
 
-	// for admin/designer to update 
+	/**
 	public void manage_quotation(String request_id, String quotation_id, String renovation_category, String category_description, String designer_name, LocalDate earliest_quotation_date, double total_quotation_amount) {
 		this.request_id = request_id;
 		this.quotation_id = quotation_id;
@@ -48,7 +48,7 @@ public class Quotation {
 		this.earliest_start_date = earliest_start_date;
 		this.total_quotation_amount = total_quotation_amount;
 	}
-	
+	**/
 	
 	public String get_property_type() {
 		return property_type;
@@ -70,26 +70,24 @@ public class Quotation {
 		return budget;
 	}
 	
-	public LocalDate get_earliest_start_date() { 
-		return earliest_start_date; 
+	public LocalDate get_eDate() { 
+		return eDate; 
 	}
 	
-	}
-	
-	public LocalDate get_completion_date() {
-		return completion_date;
+	public LocalDate get_cDate() {
+		return cDate;
 	}
 	
 	public String get_renovation_type() {
 		return renovation_type;
 	}
 	
-	public int get_num_of_rooms_renovate() {
-		return num_of_rooms_renovate;
+	public int get_numRooms() {
+		return numRooms;
 	}
 	
-	public int get_num_of_toilets_renovate() {
-		return num_of_toilets_renovate;
+	public int get_numToilets() {
+		return numToilets;
 	}
 	
 	public String get_renovation_style() {
@@ -100,16 +98,16 @@ public class Quotation {
 		return urgent_request;
 	}
 	
-	public String get_request_id() {
-		return request_id;
+	public String get_rID() {
+		return rID;
 	}
 	
-	private String get_quotation_id() {
-		return quotation_id;
+	private String get_qID() {
+		return qID;
 	}
 	
-	public String designer_name() {
-		return designer_name;
+	public String get_dName() {
+		return dName;
 	}
 	
 	public double get_total_quotation_amount() {
