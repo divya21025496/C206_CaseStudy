@@ -35,7 +35,7 @@ public class Packages {
 	public LocalDate getEndDate() { 
 		return endDate ; 
 	}
-	private double getAmount() { 
+	public double getAmount() { 
 		return amount ; 
 	}
 }
