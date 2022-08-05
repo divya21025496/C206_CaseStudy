@@ -66,10 +66,12 @@ public class C206_CaseStudy {
 				
 			}
 			else if (option == 5) {
+				/*
 				C206_CaseStudy.viewAllAppointment(appointmentList);
 				C206_CaseStudy.retrieveAllAppointment(appointmentList);
 				Appointment app = inputAppointment();
 				C206_CaseStudy.addAppointment(appointmentList, app);
+				*/
 			}
 			else {
 				
@@ -153,6 +155,7 @@ public class C206_CaseStudy {
 	
 		
 //=========================APPOINTMENT option 5
+		/*
 		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 			String output = "";
 			for(int i  = 0; i < appointmentList.size(); i++) {
@@ -180,7 +183,7 @@ public class C206_CaseStudy {
 		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment app) {
 			// TODO Auto-generated method stub
 			appointmentList.add(app);
-		}
+		} */
 //==================================================================
 		
 		
