@@ -12,7 +12,7 @@ public class C206_CaseStudyTest {
 	DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
 	
 	//User
-	
+	//
 	//Appointment
 	private Appointment app1;
 	private Appointment app2;
