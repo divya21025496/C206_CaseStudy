@@ -19,7 +19,6 @@ public class C206_CaseStudyTest {
 	private Appointment app3;
 	
 	//Package
-	private ArrayList<Packages> packageList ; 
 	private Packages pl1 ; 
 	private Packages pl2 ; 
 	private Packages pl3 ; 
@@ -27,7 +26,7 @@ public class C206_CaseStudyTest {
 	
 	//Arraylist
 	private ArrayList<Appointment> appointmentList;
-	
+	private ArrayList<Packages> packageList ; 
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -37,12 +36,15 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		//prepare test data
 //		app1 = new Appointment("", "", 2022-12-12, true);
-		//Package
-		pl1 = new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/09/2022", f1), LocalDate.parse("23/02/2023", f1) , 15000.0) ; 
-		pl2 = new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/08/2022", f1), LocalDate.parse("10/11/2022", f1) , 6000.0 ) ; 
-		pl3 = new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/06/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0 ); 
+		//Package - divya
+		//pl1 = new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/09/2022", f1), LocalDate.parse("23/02/2023", f1) , 15000.0) ; 
+		//pl2 = new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/08/2022", f1), LocalDate.parse("10/11/2022", f1) , 6000.0 ) ; 
+		//pl3 = new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/06/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0 ); 
+		pl1 = new Packages("S01", "Renovating Whole Place" ,"10/09/2022","23/02/2023", "15000.00 ") ; 
+		pl2 = new Packages("S02", "Renovating Restrooms Only" ,"10/08/2022", "10/11/2022", "6000.00 " ) ;
 		
 		appointmentList = new ArrayList<Appointment>();
+		packageList = new  ArrayList<Packages>() ; 
 		
 	}
 
@@ -83,12 +85,27 @@ public class C206_CaseStudyTest {
 		
 		//test if the expected output string same as the list of pkg retrieved from the list	
 		allPackage= C206_CaseStudy.retrieveAllPackage(packageList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "S01", "Renovating Whole Place" ,"10/09/2022", "23/02/2023", "15000.0");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","S02", "Renovating Restrooms Only" ,"10/08/2022", "10/11/2022" ,"6000.0" );
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "S01", "Renovating Whole Place" ,"10/09/2022", "23/02/2023", "15000.00");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","S02", "Renovating Restrooms Only" ,"10/08/2022", "10/11/2022" ,"6000.00" );
 	
 		assertEquals("Test that ViewAllPackagelist", testOutput, allPackage);
 			
 		}
+		public void testdeletePackage() { 
+		// Item list is not null, so that can delete an item - boundary
+		assertNotNull("Check if there is valid Camcorder arraylist to add to",packageList );
+		//Given an empty list, after adding two pgg, the size of the list is 2. 
+		//After removing an pkg, then the size of the list becomes 1.
+		C206_CaseStudy.deletePackage(packageList, pl1);
+		assertEquals("Check that Camcorder arraylist size is 1", 1, packageList.size());
+		assertSame("Check that Camcorder is added", pl1, packageList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.deletePackage(packageList, pl2);
+		assertEquals("Check that Camcorder arraylist size is 2", 2, packageList.size());
+		assertSame("Check that Camcorder is added", pl2, packageList.get(1));		
+	}
 	
 //Option 5 (APPOINTMENT) *Still not done*
 	@Test

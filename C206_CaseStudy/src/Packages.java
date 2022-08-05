@@ -10,11 +10,11 @@ import java.time.LocalDate;
 public class Packages {
 	private String code ;
 	private String description ; 
-	private LocalDate stDate ; 
-	private LocalDate endDate ; 
-	private double amount ; 
+	private String stDate ; 
+	private String endDate ; 
+	private String amount ; 
 	
-	public Packages(String code, String description, LocalDate stDate, LocalDate endDate, double amount) { 
+	public Packages(String code, String description, String stDate, String endDate, String amount) { 
 		this.code = code ; 
 		this.description = description ; 
 		this.stDate = stDate ; 
@@ -23,13 +23,25 @@ public class Packages {
 		this.amount = amount ; 
 		
 	}
+	public Packages(String code) { 
+		this.code = code ; 
+	}
 	public String getCode() { 
 		return code ; 
 	}
 	public String getDescription() { 
 		return description ; 
 	}
-	public LocalDate getStDate() { 
+	public String getStDate() { 
+		return stDate ; 
+	}
+	public String getEndDate() { 
+		return endDate ; 
+	}
+	public String getAmount() { 
+		return amount ; 
+	}
+	/*public LocalDate getStDate() { 
 		return stDate ; 
 	}
 	public LocalDate getEndDate() { 
@@ -37,5 +49,5 @@ public class Packages {
 	}
 	public double getAmount() { 
 		return amount ; 
-	}
+	}*/
 }

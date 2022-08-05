@@ -19,11 +19,14 @@ public class C206_CaseStudy {
 		
 		// 23/2/2023
 		
-		// DD MM YY
-			Packages pl = new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/09/2022", f1), LocalDate.parse("23/02/2023", f1) , 15000.0  ) ;
-			packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/08/2022", f1), LocalDate.parse("10/11/2022", f1) , 6000.0  )) ;
-			packageList.add(new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/06/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0  )) ;
+		// DD MM YY -divya
+			Packages pl = new Packages("S01", "Renovating Whole Place" ,"10/09/2022","23/02/2023", "15000.00 ") ; 
+			Packages p2 = new Packages ("S02", "Renovating Restrooms Only" ,"10/08/2022", "10/11/2022", "6000.00 " ) ;
+			//Packages pl = new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("10/09/2022", f1), LocalDate.parse("23/02/2023", f1) , 15000.0  ) ;
+			//packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("10/08/2022", f1), LocalDate.parse("10/11/2022", f1) , 6000.0  )) ;
+			//packageList.add(new Packages("S03", "Renovation Kitchen Only" ,LocalDate.parse("10/06/2022", f1), LocalDate.parse("23/10/2022", f1) , 7000.0  )) ;
 			packageList.add(pl) ; 
+			packageList.add(p2) ; 
 		
 		//packageList.add(new Packages("S01", "Renovating Whole Place" ,LocalDate.parse("2022-09-10"), LocalDate.parse("2023-02-23") , 15000.0)) ;
 	//	packageList.add(new Packages("S02", "Renovating Restrooms Only" ,LocalDate.parse("2022-08-10"), LocalDate.parse("2022-11-01") , 6000.0)) ;
@@ -41,15 +44,15 @@ public class C206_CaseStudy {
 				int choice = Helper.readInt("Enter Choice > ");
 				if (choice == 1) {
 					// view package 
-					//C206_CaseStudy.retrieveAllPackage(packageList) ;
 					C206_CaseStudy.viewAllPackage(packageList) ;
 				} else if (choice == 2) {
 					//add package 
 					Packages p = inputPackages();
 					C206_CaseStudy.addPackage(packageList, p) ; 
+					System.out.println("Package Added"); 
 				} else if(choice ==3) {
 					// delete
-					C206_CaseStudy.deletePackage(packageList) ; 
+				//	C206_CaseStudy.deletePackage(packageList, pp) ; 
 				}
 				
 				
@@ -94,7 +97,9 @@ public class C206_CaseStudy {
 		public static String retrieveAllPackage(ArrayList<Packages> packageList) {
 			String output = "" ;
 			for (int i = 0; i < packageList.size(); i++) {
-				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", packageList.get(i).getCode() , packageList.get(i).getDescription(), packageList.get(i).getStDate(), packageList.get(i).getEndDate(), packageList.get(i).getAmount()) ;
+				output += String.format("%-10s %-30s %-10s %-10s %-20s\n",
+						packageList.get(i).getCode() , packageList.get(i).getDescription(), 
+						packageList.get(i).getStDate(), packageList.get(i).getEndDate(), packageList.get(i).getAmount()) ;
 				//output += String.format("%-84s\n", packageList.get(i).toString());
 			}
 			return output; 
@@ -107,21 +112,28 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 		public static Packages inputPackages() {
-			DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
+			//DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyy") ; 
 			String code = Helper.readString("Enter code") ; 
 			String description = Helper.readString("Enter description > ");
 			String stDate = Helper.readString("Enter Start Date: ") ; 
 			String  endDate = Helper.readString("Enter End Date: ") ; 
-			double amt = Helper.readDouble("Enter amount: " ) ; 
-			LocalDate st = LocalDate.parse(stDate, f1) ;
-			LocalDate ed = LocalDate.parse(endDate, f1) ;
-			Packages pakg= new Packages(code, description, st, ed, amt);
+			//double amt = Helper.readDouble("Enter amount: " ) ; 
+			String amt = Helper.readString("Enter amt> " ) ; 
+			//LocalDate st = LocalDate.parse(stDate, f1) ;
+			//LocalDate ed = LocalDate.parse(endDate, f1) ;
+			Packages pakg= new Packages(code, description, stDate, endDate, amt);
 			return pakg ;
 		}
 		public static void addPackage(ArrayList<Packages> packageList, Packages p) {
 			packageList.add(p) ; 
 		}
-		public static void deletePackage(ArrayList<Packages> packageList) { 
+		/*public static Packages outputPackages() {
+			String codePkg = Helper.readString("Enter the Package Code: ") ; 
+			Packages pakg= new Packages(codePkg) ; 
+			return pakg; 
+		} */
+
+		public static void deletePackage(ArrayList<Packages> packageList, Packages pp) { 
 			String codePkg = Helper.readString("Enter the Package Code: ") ; 
 			for (int i = 0 ; i< packageList.size() ; i ++ ) {
 			if (packageList.get(i).getCode().equalsIgnoreCase(codePkg)) {
@@ -135,6 +147,7 @@ public class C206_CaseStudy {
 				System.out.println("Code not found in the system") ; 
 			}
 			}
+
 		}
 	
 		
