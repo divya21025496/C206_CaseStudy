@@ -91,21 +91,45 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that ViewAllPackagelist", testOutput, allPackage);
 			
 		}
-		public void testdeletePackage() { 
-		// Item list is not null, so that can delete an item - boundary
-		assertNotNull("Check if there is valid Camcorder arraylist to add to",packageList );
+	
+	@Test 
+	public void testDeleteP(){
+		// Test if Package list is not null but empty -boundary
+		assertNotNull("Check if there is valid Package arraylist to delete to",packageList );
+
+		C206_CaseStudy.addPackage(packageList, pl1);
+		C206_CaseStudy.addPackage(packageList, pl2);
+		assertEquals(2, packageList.size());
+		
+		C206_CaseStudy.deleteP(packageList, pl1.getCode());
+		assertEquals("Check that Pkg arraylist size is 1", 1, packageList.size()) ;
+		
+		C206_CaseStudy.deleteP(packageList, pl2.getCode());
+		assertEquals("Check that Pkg arraylist size is 0", 0, packageList.size());
+		
+	}
+	/*
+	@Test
+	public void testDeletePackage() { 
+		
+		assertNotNull("Check if there is valid Package arraylist to add to",packageList );
+
 		//Given an empty list, after adding two pgg, the size of the list is 2. 
 		//After removing an pkg, then the size of the list becomes 1.
-		C206_CaseStudy.deletePackage(packageList, pl1);
-		assertEquals("Check that Camcorder arraylist size is 1", 1, packageList.size());
-		assertSame("Check that Camcorder is added", pl1, packageList.get(0));
+		C206_CaseStudy.addPackage(packageList, pl1);
+		C206_CaseStudy.addPackage(packageList, pl2);
+		// Pkg list is not null, so that can delete an item - boundary
+		assertEquals(2, packageList.size());
 		
-		//Add another item. test The size of the list is 2? -normal
-		//The item just added is as same as the second item of the list
-		C206_CaseStudy.deletePackage(packageList, pl2);
-		assertEquals("Check that Camcorder arraylist size is 2", 2, packageList.size());
-		assertSame("Check that Camcorder is added", pl2, packageList.get(1));		
-	}
+		C206_CaseStudy.deleteP(packageList, pl1.getCode());
+		assertEquals("Check that Pkg arraylist size is 1", 1, packageList.size()) ;
+		//assertSame("Check that Camcorder is delete", pl1, packageList.get(1));
+  
+		//continue from step2, remove another item, then list is empty
+		C206_CaseStudy.deleteP(packageList, pl2.getCode());
+		assertEquals("Check that Pkg arraylist size is 0", 0, packageList.size());
+		//assertSame("Check that Pkg is deleted", pl2, packageList.get(1));		
+	} */
 	/*
 //Option 5 (APPOINTMENT) *Still not done*
 	@Test

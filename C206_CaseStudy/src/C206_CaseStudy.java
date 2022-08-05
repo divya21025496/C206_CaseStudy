@@ -18,6 +18,8 @@ public class C206_CaseStudy {
 		//Manage Appointment <arrayList>
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
+		//Packages p = new Packages();
+		
 		// 23/2/2023
 		
 		// DD MM YY -divya
@@ -53,7 +55,8 @@ public class C206_CaseStudy {
 					System.out.println("Package Added"); 
 				} else if(choice ==3) {
 					// delete
-				//	C206_CaseStudy.deletePackage(packageList, pp) ; 
+					//deletePackage
+					C206_CaseStudy.inputDeletePackages(packageList ) ; 
 				}
 				
 				
@@ -129,34 +132,38 @@ public class C206_CaseStudy {
 		}
 		public static void addPackage(ArrayList<Packages> packageList, Packages p) {
 			packageList.add(p) ; 
+		} 
+/*
+		public static void inputDeletePackage(ArrayList<Packages> packageList,  Packages pp) { 
+			String codePkg = Helper.readString("Enter the Package Code: ") ; 
+ 
+			deleteP (packageList, codePkg);
 		}
-		/*public static Packages outputPackages() {
+*/
+		public static void inputDeletePackages(ArrayList<Packages> packageList) { 
 			String codePkg = Helper.readString("Enter the Package Code: ") ; 
-			Packages pakg= new Packages(codePkg) ; 
-			return pakg; 
-		} */
-
-		public static void deletePackage(ArrayList<Packages> packageList, Packages pp) { 
-			String codePkg = Helper.readString("Enter the Package Code: ") ; 
-			for (int i = 0 ; i< packageList.size() ; i ++ ) {
+			 
+			deleteP (packageList, codePkg);
+		}
+		public static void deleteP(ArrayList<Packages> packageList, String codePkg) {
+		for (int i = 0 ; i< packageList.size() ; i ++ ) {
 			if (packageList.get(i).getCode().equalsIgnoreCase(codePkg)) {
 				String option = Helper.readString("Are you sure that you want to delete (y/n) > ") ; 
 				if (option.equalsIgnoreCase("y")) { 
-					packageList.remove(i) ; 
+					packageList.remove(i) ;  
 				} else { 
 					System.out.println("Delete failed") ; 
 				}
-			} else { 
-				System.out.println("Code not found in the system") ; 
-			}
-			}
-
 		}
-	
+		}
+		//System.out.println("Code not be found in the system") ; 
+		}
+//		public static void deletePackage(ArrayList<Packages> packageList, Packages p) {
+//			packageList.remove(p) ; //
+//		}//
 		
-//=========================APPOINTMENT option 5
+		//=========================APPOINTMENT option 5
 		/*
-		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 			String output = "";
 			for(int i  = 0; i < appointmentList.size(); i++) {
 				output += String.format("%-84s\n", appointmentList.get(i).toString());
