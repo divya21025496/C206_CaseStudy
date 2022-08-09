@@ -50,7 +50,8 @@ public String getStatus() {
 	return status;
 }
 
-
-
+public void display() {
+	System.out.println(String.format("\n-15 %-20s %-15s %-20s", getName(), getContactNum(), getEmail(), getStatus()));
 }
 
+}
