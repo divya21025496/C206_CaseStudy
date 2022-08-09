@@ -24,9 +24,9 @@ public class C206_CaseStudy {
 		//Manage Package <arrayList>
 		ArrayList<Packages> packageList = new ArrayList<Packages>(); 
 		//Request for quotation <arrayList>
-		ArrayList<ManageQuotation> manageList = new ArrayList<ManageQuotation>();
-		//Manage Quotation <arrayList>
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
+		//Manage Quotation <arrayList>
+		ArrayList<ManageQuotation> manageList = new ArrayList<ManageQuotation>();
 		//Manage Appointment <arrayList>
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		// OPTION 1
@@ -104,9 +104,22 @@ public class C206_CaseStudy {
 			}
 			else if (option == REQUEST_QUOTATION) {
 				//requestQuotation(quotationList);
-			}
+			} 
 			else if (option == QUOTATION) {
-				//manageQuotation(manageList);
+				quotationMenu();
+				int choice=Helper.readInt("Enter the option >");
+				if(choice==1) {
+					C206_CaseStudy.viewAllManageQuotation(manageList);
+				}else if(choice==2) {
+					ManageQuotation mq1=inputManageQuotation();
+					C206_CaseStudy.addManageQuotation(manageList,mq1) ;
+					System.out.println("Quotation Added");
+				}else if(choice==3) {
+					int id=Helper.readInt("Enter the ID of quptation to be Deleted >");
+					doRemoveManageQuotation(manageList,id);
+					System.out.println("Quotation Deleted");
+				}
+				
 			}
 			//option: appointment
 			else if (option == OPTION_APPOINTMENT) {
@@ -139,6 +152,14 @@ public class C206_CaseStudy {
 			}
 		}
 		}
+	private static void quotationMenu() {
+		// TODO Auto-generated method stub
+		C206_CaseStudy.setHeader("Quotation Management");
+		System.out.println("1. View All Quotation");
+		System.out.println("2. Add a Quotation");
+		System.out.println("3. Delete a quotation");
+		
+	}
 	public static void Choice() {
 		C206_CaseStudy.setHeader("CHOICE");
 		System.out.println("1. View Package") ; 
@@ -156,13 +177,14 @@ public class C206_CaseStudy {
 	            System.out.println("1. Manage Customer");
 	            System.out.println("2. Manage Package");
 	            System.out.println("3. Request Quotation");
-	            System.out.println("4. View Quotation ");
+	            System.out.println("4. Manage Quotation ");
 	            System.out.println("5. Manage Appointment");
 	            System.out.println("6. Delete Quotation");
 	            System.out.println("7. Quit");
 	            Helper.line(80, "-");
 
 	    }
+		  
 		private static void setHeader(String header) {
 			Helper.line(80, "-");
 			System.out.println(header);
@@ -399,7 +421,7 @@ public class C206_CaseStudy {
 		}
 */
 //=====================================================================Option 4 - incomplete==============================================================================
-/*		public static String manageQuotation(ArrayList<ManageQuotation> manageList) {
+		public static String retrieveAllManageQuotation(ArrayList<ManageQuotation> manageList) {
 			// TBD later //
 			 
 			        String output = "";
@@ -410,11 +432,11 @@ public class C206_CaseStudy {
 			        return output;
 			    }
 
-			    public static void viewAllManageQuotation(ArrayList<ManageQuotation> ManageQuotationList) {
+			    public static void viewAllManageQuotation(ArrayList<ManageQuotation> manageList) {
 			        C206_CaseStudy.setHeader("Quotation");
 			        String output = String.format("%-15s%-15s%-13s%-20s%-15s%-15s%-10s\n","REQUEST ID","QUOTATION ID","CATEGORY","ITEMS IN CATEGORY","DESIGNER","START DATE","TOTAL AMOUNT");
 
-			        output += manageQuotation(ManageQuotationList);
+			        output += retrieveAllManageQuotation(manageList);
 			        System.out.println(output);
 
 			    }
@@ -431,11 +453,42 @@ public class C206_CaseStudy {
 			        ManageQuotation MQ = new ManageQuotation(RID, QID, Category, CategoryItem, DesignerName, Date, amount);
 			        return MQ;
 			    }
+			    public static boolean findManageQuotation(ArrayList<ManageQuotation> ManageQuotationList, int ID) {
+			        boolean found = false;
+			        for (int i=0 ; i<ManageQuotationList.size() ; i++) {
+			            if (ID == ManageQuotationList.get(i).getQuotationID()) {
+			                found = true;
+			            }
+			        }
+			        return found;
+			    }
 
 
-			    public static void addManageQuotation(ArrayList<ManageQuotation> ManageQuotationList, ManageQuotation MQ) {
-			        ManageQuotationList.add(MQ);
-			    }*/
+			    public static void addManageQuotation(ArrayList<ManageQuotation> manageList, ManageQuotation MQ) {
+			        manageList.add(MQ);
+			    }
+			    public static void doRemoveManageQuotation(ArrayList<ManageQuotation> ManageQuotationList, int ID) {
+			        for (int i=0 ; i<ManageQuotationList.size() ; i++) {
+			            if (ID == ManageQuotationList.get(i).getQuotationID()) {
+			            	ManageQuotationList.remove(i);
+			            }
+			        }
+				}
+
+			    public static void removeManageQuotation(ArrayList<ManageQuotation> ManageQuotationList) {
+			        retrieveAllManageQuotation(ManageQuotationList);
+			        int ID = Helper.readInt("Enter your quotation ID > "); 
+
+			        boolean found = findManageQuotation(ManageQuotationList, ID);
+
+			        if (found == false) {
+			            System.out.println("invalid ID number");
+			        } else {
+			        	doRemoveManageQuotation(ManageQuotationList, ID);
+			            System.out.println("quotation ID: " + ID + " successfully deleted!");
+			        }
+			    }
+			
 //===================================================================Option 5======================================================================
 		
 		public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
