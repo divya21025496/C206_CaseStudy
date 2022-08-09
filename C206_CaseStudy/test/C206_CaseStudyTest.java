@@ -52,20 +52,20 @@ public class C206_CaseStudyTest {
 		// Appointment - NURIN 
 		app1 = new Appointment("Siti", "Sam", "12-12-2022", "8:30:00", "Pasir Ris ave 8");
 		app2 = new Appointment("John", "Andrew", "29-01-2023", "14:45:00", "Woodlands Drive");	
-       //Request Quotation - HWEE LIANG
+/*       //Request Quotation - HWEE LIANG
         quotation1 = new Quotation("TEST1", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
         quotation2 = new Quotation("TEST2", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
         quotation3 = new Quotation("TEST3", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
         quotationList.add(quotation1);
         quotationList.add(quotation2);
-        quotationList.add(quotation3);
+        quotationList.add(quotation3);*/
         // Quotation -ASWAN 
         
         
         customerList  =new ArrayList<Customer> () ; 
         packageList = new  ArrayList<Packages>() ; 
         appointmentList = new ArrayList<Appointment>();
-		quotationList= new ArrayList<Quotation>();
+		//quotationList= new ArrayList<Quotation>();
 	}
 
 //Option 1 (Customer) 
