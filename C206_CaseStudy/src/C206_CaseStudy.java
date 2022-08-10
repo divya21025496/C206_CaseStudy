@@ -6,6 +6,9 @@ import java.time.format.DateTimeFormatter;
 
 public class C206_CaseStudy {
 
+	private static final int DELETE_QUOTATION = 3;
+	private static final int VIEW_QUOTATION = 2;
+	private static final int ADD_QUOTATION = 1;
 	private static final int CUSTOMER_DELETE = 3;
 	private static final int CUSTOMER_VIEW = 2;
 	private static final int CUSTOMER_ADD = 1;
@@ -89,23 +92,33 @@ public class C206_CaseStudy {
 				}
 			} else if (option == OPTION_PACKAGE) {
 				Choice();
-				int choice = Helper.readInt("Enter Choice > ");
-				if (choice == VIEW_PACKAGE) {
+				int choi = Helper.readInt("Enter Choice > ");
+				if (choi == VIEW_PACKAGE) {
 					// view package
 					C206_CaseStudy.viewAllPackage(packageList);
-				} else if (choice == ADD_PACKAGE) {
+				} else if (choi == ADD_PACKAGE) {
 					// add package
 					Packages p = inputPackages();
 					C206_CaseStudy.addPackage(packageList, p);
 					System.out.println("Package Added");
-				} else if (choice == DELETE_PACKAGE) {
+				} else if (choi == DELETE_PACKAGE) {
 					// delete package
 					C206_CaseStudy.inputDeletePackages(packageList);
 					System.out.println("Package deleted");
 				}
 
 			} else if (option == REQUEST_QUOTATION) {
-				requestQuotation(quotationList);
+                    ReqQuotationMenu();
+                    int choices=Helper.readInt("Enter the option >");
+                    if(choices==ADD_QUOTATION) {
+                        requestQuotation(quotationList);
+                    }else if(choices==VIEW_QUOTATION) {
+                        viewQuotation(quotationList);
+                    }else if(choices==DELETE_QUOTATION) {
+                        deleteQuotation(quotationList);
+
+                    
+				}
 			} else if (option == QUOTATION) {
 				/*
 				 * quotationMenu(); int choice=Helper.readInt("Enter the option >");
@@ -157,7 +170,13 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete a quotation");
 
 	}
-
+	  private static void ReqQuotationMenu() {
+          // TODO Auto-generated method stub
+          C206_CaseStudy.setHeader("Request quotation");
+          System.out.println("1. Add a Request for Quotation");
+          System.out.println("2. View all request for Quotation");
+          System.out.println("3. Delete a request for Quotation by Requestor name");
+      }
 	public static void Choice() {
 		C206_CaseStudy.setHeader("CHOICE");
 		System.out.println("1. View Package");
