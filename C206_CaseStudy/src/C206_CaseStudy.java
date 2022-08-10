@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 
 public class C206_CaseStudy {
 
-	private static final int DELETE_QUOTATION = 3;
 	private static final int VIEW_QUOTATION = 2;
 	private static final int ADD_QUOTATION = 1;
 	private static final int CUSTOMER_DELETE = 3;
@@ -114,7 +113,7 @@ public class C206_CaseStudy {
                         requestQuotation(quotationList);
                     }else if(choices==VIEW_QUOTATION) {
                         viewQuotation(quotationList);
-                    }else if(choices==DELETE_QUOTATION) {
+                    }else if(choices==3) {
                         deleteQuotation(quotationList);
 
                     
