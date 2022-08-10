@@ -105,7 +105,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == REQUEST_QUOTATION) {
-				// requestQuotation(quotationList);
+				requestQuotation(quotationList);
 			} else if (option == QUOTATION) {
 				/*
 				 * quotationMenu(); int choice=Helper.readInt("Enter the option >");
