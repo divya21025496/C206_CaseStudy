@@ -20,9 +20,9 @@ public class C206_CaseStudyTest {
 	private Packages pl2 ; 
 	private Packages pl3 ; 
 	// Request Quotation
-	 private Quotation quotation1;
-	 private Quotation quotation2;
-	 private Quotation quotation3;
+	private Quotation quotation1;
+	private Quotation quotation2;
+	private Quotation quotation3;
 	// Retrieve Quotation
 	 private ManageQuotation Q;
 	//Arraylist
@@ -52,13 +52,15 @@ public class C206_CaseStudyTest {
 		// Appointment - NURIN 
 		app1 = new Appointment("Siti", "Sam", "12-12-2022", "8:30:00", "Pasir Ris ave 8");
 		app2 = new Appointment("John", "Andrew", "29-01-2023", "14:45:00", "Woodlands Drive");	
-/*       //Request Quotation - HWEE LIANG
-        quotation1 = new Quotation("TEST1", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
-        quotation2 = new Quotation("TEST2", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
-        quotation3 = new Quotation("TEST3", "property type", 1, "name", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
-        quotationList.add(quotation1);
-        quotationList.add(quotation2);
-        quotationList.add(quotation3);*/
+      //Request Quotation - HWEE LIANG
+		quotationList= new ArrayList<Quotation>();
+		quotation1 = new Quotation("TEST1", "property type", 1, "Someone", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
+		quotation2 = new Quotation("TEST2", "property type", 1, "Someone2", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
+		quotation3 = new Quotation("TEST3", "property type", 1, "Someone3", 1234567890, "email", 999999, LocalDate.parse("1111-11-11"), "whole house", 1, 1, "nil", "urgent request");
+		
+		quotationList.add(quotation1);
+		quotationList.add(quotation2);
+		quotationList.add(quotation3);
         // Quotation -ASWAN 
         
         
@@ -187,66 +189,50 @@ public class C206_CaseStudyTest {
 	}
 	
 	// Option 3 (Request Quotation)
-	/*	    public void testAddQuotation() {
-	        // Item list is not null, so that can add a new item - boundary
-	        assertNotNull("Test if there is valid Quotation arraylist to add to", quotationList);
+	@Test
+	public void testAddQuotation() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Test if there is valid Quotation arraylist to add to", quotationList);
 
-	        //Given an empty list, after adding 1 item, the size of the list is 1 - normal
-	        //The item just added is as same as the first item of the list
-	        C206_CaseStudy.addQuotation(quotationList, quotation1);        
-	        // Original 3, added 1, now 4
-	        assertEquals("Test that Quotation arraylist size is 4", 4, quotationList.size());
-	        assertSame("Test that Quotation is added", quotation1, quotationList.get(3));
+		// Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		// The item just added is as same as the first item of the list
+		C206_CaseStudy.addQuotation(quotationList, quotation1);
+		// Original 3, added 1, now 4
+		assertEquals("Test that Quotation arraylist size is 4", 4, quotationList.size());
+		assertSame("Test that Quotation is added", quotation1, quotationList.get(3));
 
-	        //Add another item. test The size of the list is 2? - normal
-	        //The item just added is as same as the second item of the list
-	        C206_CaseStudy.addQuotation(quotationList, quotation1);
-	        // Original 4, added 1, now 5
-	        assertEquals("Test that Quotation arraylist size is 5", 5, quotationList.size());
-	        assertSame("Test that Quotation is added", quotation1, quotationList.get(4));
+		// Add another item. test The size of the list is 2? - normal
+		// The item just added is as same as the second item of the list
+		C206_CaseStudy.addQuotation(quotationList, quotation1);
+		// Original 4, added 1, now 5
+		assertEquals("Test that Quotation arraylist size is 5", 5, quotationList.size());
+		assertSame("Test that Quotation is added", quotation1, quotationList.get(4));
 
-	    }
-
-	    @Test
-	    public void testDeleteQuotation() { 
-	    // Item list is not null, so that can delete an item - boundary
-	    assertNotNull("Check if there is valid Quotation arraylist, so that can delete from the list", quotationList);
-	    //Given an empty list, after adding two pgg, the size of the list is 2. 
-	    //After removing an pkg, then the size of the list becomes 1.
-	    C206_CaseStudy.deleteQuotation(quotationList, quotation1);
-	    // Original 3, removed 1, left 2
-	    assertEquals("Check that quotation arraylist size is 2", 2, quotationList.size());
-//	    assertSame("Check that quotation is added", quotation1, quotationList.get(0));
-
-	    //Add another item. test The size of the list is 2? -normal
-	    //The item just added is as same as the second item of the list
-	    C206_CaseStudy.deleteQuotation(quotationList, quotation2);
-	    assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
-	    // assertSame("Check that Quotation is added", quotation1, quotationList.get(1));        
 	}
 
-	    @Test
-	    public void testRetrieveAllQuotation() {
-	        // Item list is not null, so that can add a new item - boundary
-	        assertNotNull("Test if there is valid Quotation arraylist to retrieve from", quotationList);
+	@Test
+	public void testDeleteQuotation() {
+		assertNotNull("Check if there is valid Quotation arraylist, so that can delete from the list", quotationList);
+		C206_CaseStudy.deleteQuotation(quotationList, quotation1);
+		assertEquals("Check that quotation arraylist size is 2", 2, quotationList.size());
+		C206_CaseStudy.deleteQuotation(quotationList, quotation2);
+		assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
+	}
 
-	        //Given an empty list, after adding 1 item, the size of the list is 1 - normal
-	        //The item just added is as same as the first item of the list
-	        C206_CaseStudy.addQuotation(quotationList, quotation1);        
-	        // Original 3, added 1, now 4
-	        assertEquals("Test that Quotation arraylist size is 4", 4, quotationList.size());
-	        assertSame("Test that Quotation is added", quotation1, quotationList.get(3));
-
-	        //Add another item. test The size of the list is 2? - normal
-	        //The item just added is as same as the second item of the list
-	        C206_CaseStudy.addQuotation(quotationList, quotation1);
-	        // Original 4, added 1, now 5
-	        assertEquals("Test that Quotation arraylist size is 5", 5, quotationList.size());
-	        assertSame("Test that quotation is in quotationList", quotation1, quotationList.get(4));
-	    }*/
+	@Test
+	public void testRetrieveAllQuotation() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Test if there is valid Quotation arraylist to retrieve from", quotationList);
+		C206_CaseStudy.addQuotation(quotationList, quotation1);
+		assertEquals("Test that Quotation arraylist size is 4", 4, quotationList.size());
+		assertSame("Test that Quotation is added", quotation1, quotationList.get(3));
+		C206_CaseStudy.addQuotation(quotationList, quotation1);
+		assertEquals("Test that Quotation arraylist size is 5", 5, quotationList.size());
+		assertSame("Test that quotation is in quotationList", quotation1, quotationList.get(4));
+	}	
 	
 	// Option 4 (Quotation)
-	/*	@Test
+/*		@Test
 	public void testRetrieveAllManageQuotations() {
 		// Test if list is not null but empty - boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", manageList);
